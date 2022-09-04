@@ -28,11 +28,173 @@ input {
   --light-grayish-cyan-filter-tabs: hsl(180, 31%, 95%);
   --dark-grayish-cyan: hsl(180, 8%, 52%);
   --very-dark-grayish-cyan: hsl(180, 14%, 20%);
+  --logo-height: 40px;
 }
 
 body {
   font-family: "League Spartan", sans-serif;
   min-height: 100vh;
+  width: 375px;
+  margin: 0 auto;
+  /* text-align: center; */
+  line-height: 1;
+  font-weight: 700;
+}
+
+.header-img {
+  background-color: var(--desaturated-dark-cyan);
+}
+
+.active-filters-container {
+  width: 300px;
+  margin: -20px auto 0;
+  background-color: var(--light-grayish-cyan-bg);
+  border-radius: 5px;
+  position: relative;
+  /* border: 1px solid black; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 5px 20px -5px var(--desaturated-dark-cyan);
+}
+
+.active-filters-all {
+  width: 75%;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.active-filter {
+  margin: 5px 0;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.active-filter span {
+  color: var(--desaturated-dark-cyan);
+}
+
+.remove-btn {
+  background-color: var(--desaturated-dark-cyan);
+  margin-left: 10px;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.remove-btn:hover {
+  background-color: black;
+}
+
+.clear-btn {
+  font-weight: 500;
+  color: var(--dark-grayish-cyan);
+  width: 25%;
+}
+
+.clear-btn:hover {
+  color: var(--desaturated-dark-cyan);
+  text-decoration: underline 1px;
+  text-underline-offset: 2px;
+}
+
+/* MAIN */
+main {
+  width: 300px;
+  background-color: var(--light-grayish-cyan-bg);
+  margin: 0 auto 0;
+}
+
+.single-job-container {
+  padding: 1rem 1rem 1rem;
+  margin-top: 2.5rem;
+  position: relative;
+  border-left: 5px solid var(--desaturated-dark-cyan);
+  border-radius: 5px;
+  background-color: var(--light-grayish-cyan-filter-tabs);
+  box-shadow: 0px 5px 20px -5px var(--desaturated-dark-cyan);
+}
+
+.company-logo {
+  height: var(--logo-height);
+  position: absolute;
+  top: calc(var(--logo-height) * -0.5);
+}
+
+.main-info {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.company-name {
+  font-size: var(--font-size);
+  color: var(--desaturated-dark-cyan);
+  margin-right: 10px;
+}
+
+.main-info span {
+  font-size: calc(0.8 * var(--font-size));
+  display: inline-block;
+  text-transform: uppercase;
+  color: white;
+  height: 20px;
+  margin: 0 5px;
+  padding: 0 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.info-new {
+  background-color: var(--desaturated-dark-cyan);
+}
+
+.info-featured {
+  background-color: black;
+}
+
+.job-position {
+  font-size: var(--font-size);
+  margin: 10px 0;
+}
+
+.additional-info {
+  margin: 10px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--dark-grayish-cyan);
+}
+
+.additional-info span {
+  font-weight: 500;
+  color: var(--dark-grayish-cyan);
+  margin: 0 2px;
+}
+
+.job-requirements {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+}
+
+.job-requirements button {
+  border-radius: 5px;
+  padding: 5px;
+  color: var(--desaturated-dark-cyan);
+  margin: 0.5rem 1rem 0.5rem 0;
+}
+
+.job-requirements button:hover {
+  color: white;
+  background-color: var(--desaturated-dark-cyan);
 }
 
 footer {
