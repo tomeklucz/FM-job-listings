@@ -48,7 +48,7 @@ body {
   display: none;
 }
 
-.active-filters-container {
+.filters-window {
   width: 300px;
   margin: -20px auto 0;
   background-color: var(--light-grayish-cyan-bg);
@@ -60,7 +60,7 @@ body {
   box-shadow: 0px 5px 20px -5px var(--desaturated-dark-cyan);
 }
 
-.active-filters-all {
+.filters-container {
   width: 75%;
   padding: 0.5rem 1rem;
   display: flex;
@@ -68,7 +68,7 @@ body {
   flex-wrap: wrap;
 }
 
-.active-filter {
+.filter-single {
   margin: 5px 0;
   border-radius: 5px;
   display: flex;
@@ -77,13 +77,15 @@ body {
   overflow: hidden;
 }
 
-.active-filter span {
+.filter-single span {
   color: var(--desaturated-dark-cyan);
 }
 
-.remove-btn {
+.btn-remove {
+  content: url("/images/icon-remove.svg");
   background-color: var(--desaturated-dark-cyan);
   margin-left: 10px;
+  padding: 3px;
   height: 1.5rem;
   width: 1.5rem;
   display: flex;
@@ -91,17 +93,17 @@ body {
   align-items: center;
 }
 
-.remove-btn:hover {
+.btn-remove:hover {
   background-color: black;
 }
 
-.clear-btn {
+.btn-clear {
   font-weight: 500;
   color: var(--dark-grayish-cyan);
   width: 25%;
 }
 
-.clear-btn:hover {
+.btn-clear:hover {
   color: var(--desaturated-dark-cyan);
   text-decoration: underline 1px;
   text-underline-offset: 2px;
@@ -118,7 +120,6 @@ main {
   padding: 1rem;
   margin-top: 2.5rem;
   position: relative;
-  border-left: 5px solid var(--desaturated-dark-cyan);
   border-radius: 5px;
   background-color: var(--light-grayish-cyan-filter-tabs);
   box-shadow: 0px 5px 20px -5px var(--desaturated-dark-cyan);
@@ -206,6 +207,18 @@ main {
   background-color: var(--desaturated-dark-cyan);
 }
 
+/* JS used classes */
+
+.featured-border {
+  border-left: 5px solid var(--desaturated-dark-cyan);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Footer */
+
 footer {
   margin: 1rem 0;
   text-align: center;
@@ -224,7 +237,6 @@ footer a:hover {
 @media (min-width: 1024px) {
   body {
     min-width: 100vw;
-    /* margin: 0 auto; */
   }
 
   .header-img-mobile {
@@ -237,21 +249,21 @@ footer a:hover {
     background-color: var(--desaturated-dark-cyan);
   }
 
-  .active-filters-container {
+  .filters-window {
     width: 80%;
   }
 
-  .active-filters-all {
+  .filters-container {
     width: 90%;
     padding: 1rem 2rem;
     justify-content: flex-start;
   }
 
-  .active-filter {
+  .filter-single {
     margin-right: 2rem;
   }
 
-  .clear-btn {
+  .btn-clear {
     width: 10%;
   }
 
