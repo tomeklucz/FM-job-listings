@@ -24,8 +24,10 @@ Users should be able to:
 
 ### Screenshots
 
+<p align="center" width="100%"> 
 <img src="/screenshots/Screenshot-1-mobile.jpg" alt=""/>
 <img src="/screenshots/Screenshot-2-desktop.PNG" alt=""/>
+</p>
 
 ### Links
 
