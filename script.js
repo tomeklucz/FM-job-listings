@@ -1,28 +1,33 @@
 "use strict";
 
+/* VARIABLES */
 const jobsContainer = document.querySelector(".jobs-container");
 const requirementsContainer = document.querySelector(".requirements-container");
 const filtersWindow = document.querySelector(".filters-window");
 const filtersContainer = document.querySelector(".filters-container");
 const clearBtn = document.querySelector(".btn-clear");
 
+/* JOB LISTING APP */
 const jobListingApp = function () {
   let filters = [];
+
+  /* EVENT HANDLERS */
+  /* job requirements filtering */
   jobsContainer.addEventListener("click", function (e) {
     if (!e.target.classList.contains("btn-requirements")) return;
     if (filters.includes(e.target.innerHTML)) return;
     filters.push(e.target.innerText);
     displayFilters();
-    filtersWindow.classList.remove("hidden");
+    filtersWindowHidden("remove");
     renderData();
   });
-
+  /* clearing all filters */
   clearBtn.addEventListener("click", function () {
     filters = [];
-    filtersWindow.classList.add("hidden");
+    filtersWindowHidden("add");
     renderData();
   });
-
+  /* removing filters from filters container */
   filtersContainer.addEventListener("click", function (e) {
     if (!e.target.classList.contains("btn-remove")) return;
     filterRemove(e.target.id);
@@ -30,6 +35,8 @@ const jobListingApp = function () {
     renderData();
   });
 
+  /* FUNCTIONS */
+  /* fetching data from json and filtering before render */
   const renderData = async () => {
     jobsContainer.innerHTML = "";
     fetch("data.json")
@@ -47,19 +54,7 @@ const jobListingApp = function () {
         })
       );
   };
-
   renderData();
-
-  const displayFilters = function () {
-    filtersContainer.innerHTML = "";
-    filters.forEach((filter) => generateSingleFilterMarkup(filter));
-    if (filters.length === 0) filtersWindow.classList.add("hidden");
-  };
-
-  const filterRemove = function (id) {
-    const index = filters.indexOf(id);
-    filters.splice(index, 1);
-  };
 
   const generateSingleJobMarkup = function (item) {
     const html = `
@@ -88,17 +83,17 @@ const jobListingApp = function () {
     jobsContainer.insertAdjacentHTML("beforeend", html);
   };
 
+  const addBorder = function (featuredFlag) {
+    let borderClass = "";
+    if (featuredFlag) borderClass += `featured-border`;
+    return borderClass;
+  };
+
   const checkFlags = function (newFlag, featuredFlag) {
     let flags = "";
     if (newFlag) flags += `<span class="info-new">new!</span>`;
     if (featuredFlag) flags += `<span class="info-featured">featured</span>`;
     return flags;
-  };
-
-  const addBorder = function (featuredFlag) {
-    let borderClass = "featured-border";
-    if (!featuredFlag) return;
-    return borderClass;
   };
 
   const listRequirements = function (languages, tools) {
@@ -110,6 +105,12 @@ const jobListingApp = function () {
     return reqMarkup;
   };
 
+  const displayFilters = function () {
+    filtersContainer.innerHTML = "";
+    filters.forEach((filter) => generateSingleFilterMarkup(filter));
+    if (filters.length === 0) filtersWindowHidden("add");
+  };
+
   const generateSingleFilterMarkup = function (filter) {
     const html = `
   <div class="filter-single">
@@ -118,10 +119,16 @@ const jobListingApp = function () {
   </div>`;
     filtersContainer.insertAdjacentHTML("beforeend", html);
   };
+
+  const filterRemove = function (id) {
+    const index = filters.indexOf(id);
+    filters.splice(index, 1);
+  };
+
+  const filtersWindowHidden = function (command) {
+    command === "add"
+      ? filtersWindow.classList.add("hidden")
+      : filtersWindow.classList.remove("hidden");
+  };
 };
 jobListingApp();
-
-/* PROBLEMS
--> przy klasie borderowej dodaje do pozostałych ogłoszeń "undefined"
--> wyśrodkowanie napisów w buttonach
-*/
